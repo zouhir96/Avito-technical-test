@@ -3,7 +3,7 @@ package com.zrcoding.android_challenge.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.zrcoding.android_challenge.R
-import com.zrcoding.android_challenge.ui.main.MainFragment
+import com.zrcoding.android_challenge.ui.movie.list.MovieListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, MovieListFragment.newInstance())
                 .commitNow()
         }
     }
