@@ -1,4 +1,4 @@
-package com.zrcoding.android_challenge.ui.main
+package com.zrcoding.android_challenge.ui.movie.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,25 +7,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.zrcoding.android_challenge.R
+import com.zrcoding.android_challenge.ui.movie.details.viewmodels.MovieDetailsViewModel
 
-class MainFragment : Fragment() {
+class MovieDetailsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = MovieDetailsFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: MovieDetailsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+    ): View? {
+        return inflater.inflate(R.layout.movie_details_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MovieDetailsViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
