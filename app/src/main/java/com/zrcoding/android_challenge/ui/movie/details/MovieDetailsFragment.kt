@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.zrcoding.android_challenge.R
 import com.zrcoding.android_challenge.ui.movie.details.viewmodels.MovieDetailsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
 
     companion object {
@@ -24,10 +26,8 @@ class MovieDetailsFragment : Fragment() {
         return inflater.inflate(R.layout.movie_details_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MovieDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
     }
-
 }

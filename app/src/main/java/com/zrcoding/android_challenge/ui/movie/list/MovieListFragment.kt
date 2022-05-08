@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.zrcoding.android_challenge.R
 import com.zrcoding.android_challenge.ui.movie.list.viewmodels.MovieListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieListFragment : Fragment() {
 
     companion object {
@@ -24,10 +26,9 @@ class MovieListFragment : Fragment() {
         return inflater.inflate(R.layout.movie_list_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

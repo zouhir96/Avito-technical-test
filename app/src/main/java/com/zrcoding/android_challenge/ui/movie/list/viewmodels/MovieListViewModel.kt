@@ -1,7 +1,11 @@
 package com.zrcoding.android_challenge.ui.movie.list.viewmodels
 
 import androidx.lifecycle.ViewModel
+import com.zrcoding.android_challenge.data.repositories.MovieRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MovieListViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
-}
+@HiltViewModel
+class MovieListViewModel @Inject constructor(
+    private val movieRepository: MovieRepository
+) : ViewModel()
