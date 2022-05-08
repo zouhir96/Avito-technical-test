@@ -6,7 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.zrcoding.android_challenge.core.Constants.LOCAL_PAGE_SIZE
 import com.zrcoding.android_challenge.data.local.AppDatabase
-import com.zrcoding.android_challenge.data.local.entites.MovieEntity
+import com.zrcoding.android_challenge.data.local.entities.MovieEntity
 import com.zrcoding.android_challenge.data.local.helpers.OrderBy
 import com.zrcoding.android_challenge.data.local.helpers.getMovieQuery
 import com.zrcoding.android_challenge.data.remote.MovieDbApi

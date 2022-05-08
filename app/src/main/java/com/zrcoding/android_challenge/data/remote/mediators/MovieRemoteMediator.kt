@@ -9,8 +9,8 @@ import com.zrcoding.android_challenge.core.Constants.MDB_STARTING_PAGE_INDEX
 import com.zrcoding.android_challenge.core.Constants.PAGE_INDEX_OUT_OF_BOX_ERROR_CODE
 import com.zrcoding.android_challenge.core.toEntities
 import com.zrcoding.android_challenge.data.local.AppDatabase
-import com.zrcoding.android_challenge.data.local.entites.MovieEntity
-import com.zrcoding.android_challenge.data.local.entites.RemoteKeys
+import com.zrcoding.android_challenge.data.local.entities.MovieEntity
+import com.zrcoding.android_challenge.data.local.entities.RemoteKeysEntity
 import com.zrcoding.android_challenge.data.remote.MovieDbApi
 import com.zrcoding.android_challenge.data.remote.helpers.createMovieRequestQueryMap
 import com.zrcoding.android_challenge.data.remote.helpers.createMovieRequestUrl
@@ -48,7 +48,7 @@ class MovieRemoteMediator(
         try {
             val movieResponse = movieDbApi.fetchMovies(
                 createMovieRequestUrl(query),
-                createMovieRequestQueryMap(query)
+                createMovieRequestQueryMap(query, page)
             )
             var endOfPaginationReached = false
             if (movieResponse.isSuccessful) {
@@ -62,7 +62,7 @@ class MovieRemoteMediator(
                     val prevKey = if (page == MDB_STARTING_PAGE_INDEX) null else page - 1
                     val nextKey = if (endOfPaginationReached) null else page + 1
                     val keys = movies.map {
-                        RemoteKeys(movieId = it.id, prevKey = prevKey, nextKey = nextKey)
+                        RemoteKeysEntity(movieId = it.id, prevKey = prevKey, nextKey = nextKey)
                     }
                     appDatabase.getRemoteKeysDao().insert(keys)
                     appDatabase.getMovieDao().insert(movies.toEntities())
@@ -78,7 +78,7 @@ class MovieRemoteMediator(
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, MovieEntity>): RemoteKeys? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, MovieEntity>): RemoteKeysEntity? {
         // Get the last page that was retrieved, that contained items.
         // From that last page, get the last item
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
@@ -88,7 +88,7 @@ class MovieRemoteMediator(
             }
     }
 
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, MovieEntity>): RemoteKeys? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, MovieEntity>): RemoteKeysEntity? {
         // Get the first page that was retrieved, that contained items.
         // From that first page, get the first item
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
@@ -100,7 +100,7 @@ class MovieRemoteMediator(
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(
         state: PagingState<Int, MovieEntity>
-    ): RemoteKeys? {
+    ): RemoteKeysEntity? {
         // The paging library is trying to load data after the anchor position
         // Get the item closest to the anchor position
         return state.anchorPosition?.let { position ->

@@ -2,7 +2,7 @@ package com.zrcoding.android_challenge.data.local.helpers
 
 import androidx.paging.PagingSource
 import com.zrcoding.android_challenge.data.local.AppDatabase
-import com.zrcoding.android_challenge.data.local.entites.MovieEntity
+import com.zrcoding.android_challenge.data.local.entities.MovieEntity
 
 enum class OrderBy{
     NONE, DATE_ASC, DATE_DESC, ALPHABETICAL_ASC, ALPHABETICAL_DESC

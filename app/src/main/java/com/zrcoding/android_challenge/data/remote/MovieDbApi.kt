@@ -11,6 +11,6 @@ interface MovieDbApi {
     @GET
     suspend fun fetchMovies(
         @Url url: String,
-        @QueryMap map: Map<String, Any>
+        @QueryMap map: Map<String, String>
     ): Response<MediaDto<MovieDto>>
 }

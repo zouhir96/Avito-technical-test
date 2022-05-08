@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.zrcoding.android_challenge.data.local.entites.MovieEntity
+import com.zrcoding.android_challenge.data.local.entities.MovieEntity
 
 @Dao
 interface MovieDao{

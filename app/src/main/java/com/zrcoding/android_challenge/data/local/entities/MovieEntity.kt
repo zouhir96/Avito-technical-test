@@ -1,4 +1,4 @@
-package com.zrcoding.android_challenge.data.local.entites
+package com.zrcoding.android_challenge.data.local.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -18,12 +18,4 @@ data class MovieEntity(
     val adult: Boolean,
     val favorite: Boolean,
     val isSynchronized: Boolean,
-)
-
-@Entity(tableName = "remote_keys")
-data class RemoteKeys(
-    @PrimaryKey
-    @ColumnInfo(name = "movie_id") val movieId: Long,
-    @ColumnInfo(name = "prev_key") val prevKey: Int?,
-    @ColumnInfo(name = "next_key") val nextKey: Int?
 )
