@@ -27,3 +27,7 @@ fun getMovieQuery(
         OrderBy.ALPHABETICAL_DESC -> appDatabase.getMovieDao().searchMoviesOrderedByNameDesc(searchQuery)
     }
 }
+
+fun String.todBQuery() :String {
+    return "%${this.replace(' ', '%')}%"
+}

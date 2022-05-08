@@ -15,10 +15,10 @@ interface MovieDao{
     @Query("SELECT * FROM movies")
     fun getAll(): PagingSource<Int, MovieEntity>
 
-    @Query("SELECT * FROM movies ORDER BY release_date ASC")
+    @Query("SELECT * FROM movies ORDER BY title ASC")
     fun getAllOrderedByNameAsc(): PagingSource<Int, MovieEntity>
 
-    @Query("SELECT * FROM movies ORDER BY release_date DESC")
+    @Query("SELECT * FROM movies ORDER BY title DESC")
     fun getAllOrderedByNameDesc(): PagingSource<Int, MovieEntity>
 
     @Query("SELECT * FROM movies ORDER BY release_date DESC")
@@ -30,10 +30,10 @@ interface MovieDao{
     @Query("SELECT * FROM movies WHERE title LIKE :query")
     fun searchMovies(query: String): PagingSource<Int, MovieEntity>
 
-    @Query("SELECT * FROM movies WHERE title LIKE :query ORDER BY release_date ASC")
+    @Query("SELECT * FROM movies WHERE title LIKE :query ORDER BY title ASC")
     fun searchMoviesOrderedByNameAsc(query: String): PagingSource<Int, MovieEntity>
 
-    @Query("SELECT * FROM movies WHERE title LIKE :query ORDER BY release_date DESC")
+    @Query("SELECT * FROM movies WHERE title LIKE :query ORDER BY title DESC")
     fun searchMoviesOrderedByNameDesc(query: String): PagingSource<Int, MovieEntity>
 
     @Query("SELECT * FROM movies WHERE title LIKE :query ORDER BY release_date ASC")

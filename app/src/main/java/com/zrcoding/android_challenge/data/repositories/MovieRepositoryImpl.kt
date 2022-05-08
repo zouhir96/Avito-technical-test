@@ -9,6 +9,7 @@ import com.zrcoding.android_challenge.data.local.AppDatabase
 import com.zrcoding.android_challenge.data.local.entities.MovieEntity
 import com.zrcoding.android_challenge.data.local.helpers.OrderBy
 import com.zrcoding.android_challenge.data.local.helpers.getMovieQuery
+import com.zrcoding.android_challenge.data.local.helpers.todBQuery
 import com.zrcoding.android_challenge.data.remote.MovieDbApi
 import com.zrcoding.android_challenge.data.remote.mediators.MovieRemoteMediator
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +20,7 @@ class MovieRepositoryImpl @Inject constructor(
     private val movieDbApi: MovieDbApi
 ) : MovieRepository {
     @OptIn(ExperimentalPagingApi::class)
-    override suspend fun getMovies(query: String, orderBy: OrderBy): Flow<PagingData<MovieEntity>> {
+    override fun getMovies(query: String, orderBy: OrderBy): Flow<PagingData<MovieEntity>> {
         return Pager(
             config = PagingConfig(
                 pageSize = LOCAL_PAGE_SIZE,
@@ -33,8 +34,8 @@ class MovieRepositoryImpl @Inject constructor(
             pagingSourceFactory = {
                 getMovieQuery(
                     appDatabase = appDatabase,
-                    orderBy = OrderBy.NONE,
-                    searchQuery = query
+                    orderBy = orderBy,
+                    searchQuery = query.todBQuery()
                 )
             }
         ).flow
