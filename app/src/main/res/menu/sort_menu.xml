@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/sort"
+        android:menuCategory="alternative">
+        <item
+            android:id="@+id/date_asc"
+            android:icon="@drawable/ic_up"
+            android:title="@string/date_asc" />
+
+        <item
+            android:id="@+id/date_desc"
+            android:icon="@drawable/ic_down"
+            android:title="@string/date_desc" />
+
+        <item
+            android:id="@+id/name_asc"
+            android:icon="@drawable/ic_up"
+            android:title="@string/name_asc" />
+
+        <item
+            android:id="@+id/name_desc"
+            android:icon="@drawable/ic_down"
+            android:title="@string/name_desc" />
+    </group>
+</menu>

@@ -27,6 +27,7 @@ fun MovieEntity.toMovieUiModel(): MovieUiModel{
     return MovieUiModel(
         id = this.id,
         title = this.title,
+        date = this.releaseDate,
         imagePath = this.backdropImagePath,
         votes = this.voteCount,
         rate = this.voteAverage,
