@@ -10,8 +10,7 @@ The idea is to develop and android application that Consumes the TheMovieDb publ
 - Dependency injection - Hilt
 - Kotlin coroutines
 - REST API with local caching using Room Database
-- Material design
-- Splash screen Api
+- Material design (Dark/Light mode)
 
 ### 🚧 TODO
 - [x] Movies Listing screen

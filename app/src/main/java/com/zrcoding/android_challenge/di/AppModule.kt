@@ -2,6 +2,7 @@ package com.zrcoding.android_challenge.di
 
 import android.content.Context
 import androidx.room.Room
+import com.zrcoding.android_challenge.BuildConfig
 import com.zrcoding.android_challenge.core.Constants.API_BASE_URL
 import com.zrcoding.android_challenge.core.Constants.DATABASE_NAME
 import com.zrcoding.android_challenge.data.local.AppDatabase
@@ -11,11 +12,14 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -32,6 +36,14 @@ class AppModule {
     @Singleton
     fun provideOkHTTP(interceptor: HttpLoggingInterceptor): OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(interceptor)
+        .addInterceptor {chain->
+            var request: Request = chain.request()
+            val url: HttpUrl = request.url.newBuilder()
+                .addQueryParameter("api_key", BuildConfig.API_KEY)
+                .build()
+            request = request.newBuilder().url(url).build()
+            chain.proceed(request)
+        }
         .build()
 
     @Provides

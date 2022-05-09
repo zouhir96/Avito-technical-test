@@ -126,13 +126,14 @@ class MovieListFragment : Fragment() {
 
     private fun updateMovieListFromInput() {
         binding.searchMoviesEt.text?.trim().let {
-            binding.movieListRv.scrollToPosition(0)
             viewModel.accept(MovieUiActions.Search(it.toString()))
+            binding.movieListRv.scrollToPosition(0)
         }
     }
 
     private fun sortMovieList(orderBy: OrderBy) {
         viewModel.accept(MovieUiActions.Sort(orderBy))
+        binding.movieListRv.scrollToPosition(0)
     }
 
 }

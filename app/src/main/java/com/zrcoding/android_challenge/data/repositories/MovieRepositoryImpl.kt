@@ -10,8 +10,8 @@ import com.zrcoding.android_challenge.data.local.entities.MovieEntity
 import com.zrcoding.android_challenge.data.local.helpers.OrderBy
 import com.zrcoding.android_challenge.data.local.helpers.getMovieQuery
 import com.zrcoding.android_challenge.data.local.helpers.todBQuery
+import com.zrcoding.android_challenge.data.paging.mediators.MovieRemoteMediator
 import com.zrcoding.android_challenge.data.remote.MovieDbApi
-import com.zrcoding.android_challenge.data.remote.mediators.MovieRemoteMediator
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
