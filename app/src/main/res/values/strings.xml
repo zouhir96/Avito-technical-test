@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Android-challenge</string>
+    <string name="app_title">MoviesByMovieDb</string>
+    <string name="search_hint">search movies</string>
+    <string name="date_asc">date asc</string>
+    <string name="date_desc">date desc</string>
+    <string name="name_asc">name asc</string>
+    <string name="name_desc">name desc</string>
 </resources>
